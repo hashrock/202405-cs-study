@@ -1,5 +1,5 @@
-import { assertEquals } from "jsr:@std/assert";
-import { appendTail, Node } from "./main.ts";
+import { assertEquals, fail } from "jsr:@std/assert";
+import { appendTail, insert, Node, toString } from "./main.ts";
 
 function setup() {
   const root = new Node(1);
@@ -16,6 +16,21 @@ Deno.test(function appendTest() {
   assertEquals(root.next?.next?.data, 3);
 });
 
+Deno.test(function toStringTest1() {
+  const root = setup();
+  assertEquals(toString(root), "1,2,3");
+});
+
+Deno.test(function toStringTest2() {
+  const root = new Node(1);
+  assertEquals(toString(root), "1");
+});
+
 Deno.test(function insertTest() {
   const root = setup();
+  const insertPoint = root.next;
+  if (insertPoint === null) {
+    fail();
+  }
+  insert(insertPoint, 2.5);
 });
