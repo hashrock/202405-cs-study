@@ -1,5 +1,6 @@
 import { assertEquals, fail } from "jsr:@std/assert";
 import { appendTail, insert, Node, toString } from "./main.ts";
+import { remove } from "./main.ts";
 
 function setup() {
   const root = new Node(1);
@@ -35,4 +36,18 @@ Deno.test(function insertTest() {
   insert(insertPoint, 2.5);
 
   assertEquals(toString(root), "1,2,2.5,3");
+});
+
+Deno.test(function removeTest() {
+  const root = setup();
+  // 1,2,3
+  // point is 2
+  const removePoint = root.next;
+
+  if (removePoint === null) {
+    fail();
+  }
+
+  remove(root, removePoint);
+  assertEquals(toString(root), "1,3");
 });
