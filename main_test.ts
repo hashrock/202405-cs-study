@@ -33,4 +33,6 @@ Deno.test(function insertTest() {
     fail();
   }
   insert(insertPoint, 2.5);
+
+  assertEquals(toString(root), "1,2,2.5,3");
 });

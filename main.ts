@@ -9,7 +9,16 @@ export class Node {
 }
 
 export function insert(node: Node, data: number) {
-  // TODO
+  const next = node.next;
+  const item = new Node(data);
+  item.prev = node;
+  item.next = next;
+
+  node.next = item;
+
+  if (next !== null) {
+    next.prev = item;
+  }
 }
 
 export function remove(node: Node) {
