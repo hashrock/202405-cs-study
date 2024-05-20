@@ -48,6 +48,6 @@ Deno.test(function removeTest() {
     fail();
   }
 
-  remove(root, removePoint);
+  remove(removePoint);
   assertEquals(toString(root), "1,3");
 });

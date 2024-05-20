@@ -21,8 +21,14 @@ export function insert(node: Node, data: number) {
   }
 }
 
-export function remove(root: Node, removeItem: Node) {
-  //TODO
+export function remove(removeItem: Node) {
+  const { prev, next } = removeItem;
+  if (prev !== null) {
+    prev.next = next;
+  }
+  if (next !== null) {
+    next.prev = prev;
+  }
 }
 
 export function appendTail(node: Node, data: number) {
