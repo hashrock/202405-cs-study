@@ -62,6 +62,20 @@ export function fromArray(data: number[]) {
   return root;
 }
 
+export function toArray(root: Node) {
+  const output = [];
+  let cur = root;
+  while (true) {
+    output.push(cur.data);
+    if (cur.next === null) {
+      break;
+    } else {
+      cur = cur.next;
+    }
+  }
+  return output;
+}
+
 export function removeDuplication(root: Node) {
   // TODO
 }
