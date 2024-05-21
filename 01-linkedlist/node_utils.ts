@@ -43,3 +43,25 @@ export function toString(node: Node) {
   out += n.data;
   return out;
 }
+
+export function fromArray(data: number[]) {
+  let root: Node | null = null;
+
+  if (data === null || data.length === 0) {
+    throw new Error("data should not be empty");
+  }
+
+  for (let i = 0; i < data.length; i++) {
+    if (root === null) {
+      root = new Node(data[i]);
+    } else {
+      appendTail(root, data[i]);
+    }
+  }
+
+  return root;
+}
+
+export function removeDuplication(root: Node) {
+  // TODO
+}

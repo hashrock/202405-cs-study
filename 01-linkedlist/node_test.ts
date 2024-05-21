@@ -1,6 +1,12 @@
 import { assertEquals, fail } from "jsr:@std/assert";
 import { Node } from "./node.ts";
-import { appendTail, insert, remove, toString } from "./node_utils.ts";
+import {
+  appendTail,
+  fromArray,
+  insert,
+  remove,
+  toString,
+} from "./node_utils.ts";
 
 function setup() {
   const root = new Node(1);
@@ -50,4 +56,15 @@ Deno.test(function removeTest() {
 
   remove(removePoint);
   assertEquals(toString(root), "1,3");
+});
+
+Deno.test(function fromArrayTest() {
+  const root = fromArray([1, 2, 3]);
+  if (root === null) {
+    fail();
+  }
+  assertEquals(toString(root), "1,2,3");
+});
+
+Deno.test(function removeDupTest() {
 });
