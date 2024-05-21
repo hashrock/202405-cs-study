@@ -73,9 +73,7 @@ Deno.test(function removeDupTest() {
   if (root === null) {
     fail();
   }
-
-  removeDuplication(root);
-  assertEquals(toString(root), "1,2,3");
+  assertEquals(toString(removeDuplication(root)), "1,2,3");
 });
 
 Deno.test(function toArrayTest() {

@@ -33,7 +33,10 @@ export function appendTail(node: Node, data: number) {
   end.prev = n;
 }
 
-export function toString(node: Node) {
+export function toString(node: Node | null) {
+  if (node === null) {
+    return "";
+  }
   let out = "";
   let n = node;
   while (n.next !== null) {
@@ -77,5 +80,6 @@ export function toArray(root: Node) {
 }
 
 export function removeDuplication(root: Node) {
-  // TODO
+  const set = new Set(toArray(root));
+  return fromArray(Array.from(set));
 }
