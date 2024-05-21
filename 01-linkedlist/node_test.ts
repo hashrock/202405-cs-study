@@ -5,6 +5,7 @@ import {
   fromArray,
   insert,
   remove,
+  removeDuplication,
   toString,
 } from "./node_utils.ts";
 
@@ -67,4 +68,11 @@ Deno.test(function fromArrayTest() {
 });
 
 Deno.test(function removeDupTest() {
+  const root = fromArray([1, 2, 2, 3, 3]);
+  if (root === null) {
+    fail();
+  }
+
+  removeDuplication(root);
+  assertEquals(toString(root), "1,2,3");
 });
