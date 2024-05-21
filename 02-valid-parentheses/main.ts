@@ -2,24 +2,44 @@
 // ３つisOpenを用意して境界でエラーチェック
 
 export function isValid(s: string): boolean {
-  let isOpen = false;
+  const stack = [];
 
   for (let i = 0; i < s.length; i++) {
     const c = s[i];
+    let d = null;
 
-    if (c === "(") {
-      isOpen = true;
-    }
-
-    if (c === ")") {
-      isOpen = false;
+    switch (c) {
+      case "(":
+        stack.push(c);
+        break;
+      case "[":
+        stack.push(c);
+        break;
+      case "{":
+        stack.push(c);
+        break;
+      case ")":
+        d = stack.pop();
+        if (d !== "(") {
+          return false;
+        }
+        break;
+      case "]":
+        d = stack.pop();
+        if (d !== "[") {
+          return false;
+        }
+        break;
+      case "}":
+        d = stack.pop();
+        if (d !== "{") {
+          return false;
+        }
+        break;
+      default:
+        throw new Error("カッコ以外入れないで");
     }
   }
 
-  // Error check
-  if (isOpen) {
-    return false;
-  }
-
-  return true;
+  return stack.length === 0;
 }
