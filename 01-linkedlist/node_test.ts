@@ -1,6 +1,6 @@
 import { assertEquals, fail } from "jsr:@std/assert";
-import { appendTail, insert, Node, toString } from "./main.ts";
-import { remove } from "./main.ts";
+import { Node } from "./node.ts";
+import { appendTail, insert, remove, toString } from "./node_utils.ts";
 
 function setup() {
   const root = new Node(1);
