@@ -1,5 +1,9 @@
+// 削除をうまくやる
+// ３つisOpenを用意して境界でエラーチェック
+
 export function isValid(s: string): boolean {
   let isOpen = false;
+
   for (let i = 0; i < s.length; i++) {
     const c = s[i];
 
