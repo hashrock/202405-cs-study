@@ -12,13 +12,10 @@ export function toString(head: ListNode | null): string {
   if (head === null) {
     return "";
   }
-  let cur = head;
+  let cur: ListNode | null = head;
   while (cur) {
     output.push(cur.val);
-
-    if (cur.next !== null) {
-      cur = cur.next;
-    }
+    cur = cur.next;
   }
   return output.join(",");
 }
