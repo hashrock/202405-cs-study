@@ -29,4 +29,5 @@ Deno.test(function removeDupTest() {
   node4.next = node5;
 
   deleteDuplicates(node1);
+  assertEquals(toString(node1), "1,2,3");
 });
