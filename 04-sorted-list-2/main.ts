@@ -1,31 +1,22 @@
 import { ListNode } from "./list.ts";
 
 export function deleteDuplicates(head: ListNode | null): ListNode | null {
-  let start = head;
-  let end: ListNode | null = null;
-  let prevEnd: ListNode | null = null;
+  let readCur = head;
+  let output = null;
+  let writePrev: ListNode | null = null;
 
-  while (start) {
-    let cur: ListNode | null = start;
-    let cnt = 1;
-
-    while (cur) {
-      if (cur?.next === null || start.val !== cur?.next?.val) {
-        prevEnd = end;
-        end = cur;
-        break;
+  while (readCur) {
+    const node = new ListNode(readCur.val);
+    if (output === null) {
+      output = node;
+    } else {
+      if (writePrev !== null) {
+        writePrev.next = node;
       }
-      cur = cur.next;
-      cnt++;
     }
-
-    if (prevEnd) {
-      prevEnd.next = cur.next;
-    }
-    prevEnd = cur;
-    // start.next = cur.next;
-    start = start.next;
+    writePrev = node;
+    readCur = readCur.next;
   }
 
-  return head;
+  return output;
 }
