@@ -16,18 +16,18 @@ export function deleteDuplicates(head: ListNode | null): ListNode | null {
 
     // ノードを複製
     const node = new ListNode(readStartCur.val);
-    if (output === null) {
-      if (sequenceCount === 1) {
+    if (sequenceCount === 1) {
+      if (output === null) {
         output = node;
         // 次のループへ
         writePrev = node;
-      }
-    } else {
-      // ノードを接続
-      if (writePrev !== null && sequenceCount === 1) {
-        writePrev.next = node;
-        // 次のループへ
-        writePrev = node;
+      } else {
+        // ノードを接続
+        if (writePrev !== null) {
+          writePrev.next = node;
+          // 次のループへ
+          writePrev = node;
+        }
       }
     }
 
