@@ -9,10 +9,11 @@ Deno.test(function testDup() {
     1,
     2,
     2,
+    2,
     3,
   ]));
 
-  const expected = [1, 2, 2, 3];
+  const expected = [1, 3];
 
   if (ret === null) {
     fail();
