@@ -18,16 +18,39 @@ Deno.test(function toStringTest() {
 
 Deno.test(function removeDupTest() {
   const node1 = new ListNode(1);
-  const node2 = new ListNode(2);
-  const node3 = new ListNode(2);
-  const node4 = new ListNode(3);
-  const node5 = new ListNode(3);
+  const node2 = new ListNode(1);
+  const node3 = new ListNode(1);
+  const node4 = new ListNode(1);
+  const node5 = new ListNode(1);
 
   node1.next = node2;
   node2.next = node3;
   node3.next = node4;
   node4.next = node5;
 
+  deleteDuplicates(node1);
+  assertEquals(toString(node1), "1");
+});
+
+Deno.test(function removeDupTest() {
+  const node1 = new ListNode(1);
+  const node2 = new ListNode(2);
+  const node3 = new ListNode(2);
+  node1.next = node2;
+  node2.next = node3;
+
+  deleteDuplicates(node1);
+  assertEquals(toString(node1), "1,2");
+});
+
+Deno.test(function removeDupTest() {
+  const node1 = new ListNode(1);
+  const node2 = new ListNode(2);
+  const node3 = new ListNode(2);
+  const node4 = new ListNode(3);
+  node1.next = node2;
+  node2.next = node3;
+  node3.next = node4;
   deleteDuplicates(node1);
   assertEquals(toString(node1), "1,2,3");
 });

@@ -27,16 +27,16 @@ export function deleteDuplicates(head: ListNode | null): ListNode | null {
   }
 
   while (start) {
-    let cur = start.next;
+    let cur: ListNode | null = start;
 
     while (cur) {
-      if (start.val !== cur.val) {
-        start.next = cur;
+      if (cur?.next === null || start.val !== cur?.next?.val) {
         break;
       }
       cur = cur.next;
     }
 
+    start.next = cur.next;
     start = start.next;
   }
 
