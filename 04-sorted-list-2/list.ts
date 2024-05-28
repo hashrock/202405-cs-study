@@ -20,29 +20,6 @@ export function toString(head: ListNode | null): string {
   return output.join(",");
 }
 
-export function deleteDuplicates(head: ListNode | null): ListNode | null {
-  let start = head;
-  if (start === null) {
-    return head;
-  }
-
-  while (start) {
-    let cur: ListNode | null = start;
-
-    while (cur) {
-      if (cur?.next === null || start.val !== cur?.next?.val) {
-        break;
-      }
-      cur = cur.next;
-    }
-
-    start.next = cur.next;
-    start = start.next;
-  }
-
-  return head;
-}
-
 export function fromArray(data: number[]) {
   let root: ListNode | null = null;
 
