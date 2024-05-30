@@ -10,11 +10,25 @@
  * }
  */
 
-import { ListNode } from "./list.ts";
+import { fromArray, ListNode, toArray } from "./list.ts";
 
-function addTwoNumbers(
+export function addTwoNumbers(
   l1: ListNode | null,
   l2: ListNode | null,
 ): ListNode | null {
-  return null;
+  if (l1 === null || l2 === null) {
+    return null;
+  }
+
+  const a1 = toArray(l1);
+  const a2 = toArray(l2);
+
+  const a = Number(a1.reverse().join(""));
+  const b = Number(a2.reverse().join(""));
+
+  const r = fromArray(
+    (a + b).toString().split("").reverse().map((i) => Number(i)),
+  );
+
+  return r;
 }
